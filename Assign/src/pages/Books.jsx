@@ -31,18 +31,14 @@ const Books = () => {
 
   // ✅ FINAL NEXT BUTTON (FIXED)
 const handleNext = async () => {
-  // ✅ 1. Pehle navigation (instant)
-  navigate("/receipt", {
-    state: {
+  try {
+    console.log("Sending data:", {
       ...state,
       books: cart,
       amount: total,
-    },
-  });
+    });
 
-  // ✅ 2. Backend call background me
-  try {
-    await fetch("https://project-8pos.onrender.com/api/book", {
+    const res = await fetch("https://project-8pos.onrender.com/api/book", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -53,8 +49,24 @@ const handleNext = async () => {
         amount: total,
       }),
     });
+
+    const data = await res.json();
+
+    console.log("RESPONSE:", data);
+
+    // 👇 IMPORTANT CHECK
+    if (!data.meeting_link) {
+      alert("Meeting link not received ❌");
+      return;
+    }
+
+    navigate("/receipt", {
+      state: data,
+    });
+
   } catch (err) {
-    console.log("Backend error:", err);
+    console.log("ERROR:", err);
+    alert("Backend error ❌");
   }
 };
 
