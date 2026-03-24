@@ -18,13 +18,14 @@ app.post("/api/book", async (req, res) => {
   const meetingLink = `https://meet.google.com/${Math.random().toString(36).substring(2,10)}`;
 
   const transporter = nodemailer.createTransport({
-    service: "gmail",
-    auth: {
-      user: process.env.EMAIL,
-      pass: process.env.PASS,
-    },
-  });
-
+  host: "smtp.gmail.com",
+  port: 465,
+  secure: true,
+  auth: {
+    user: process.env.EMAIL,
+    pass: process.env.PASS,
+  },
+});
   try {
     await transporter.sendMail({
       from: process.env.EMAIL, // ✅ FIXED
