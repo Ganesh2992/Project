@@ -1,7 +1,8 @@
 import { useLocation } from "react-router-dom";
 
 const Receipt = () => {
-  const { state } = useLocation();
+  const location = useLocation();
+const state = location.state || JSON.parse(localStorage.getItem("receiptData")) || {};
 
   // ✅ SAFE DESTRUCTURE (IMPORTANT)
 const {

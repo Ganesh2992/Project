@@ -31,6 +31,7 @@ const Books = () => {
 
   // ✅ FINAL NEXT BUTTON (FIXED)
 const handleNext = async () => {
+  
   try {
     console.log("Sending data:", {
       ...state,
@@ -59,7 +60,7 @@ const handleNext = async () => {
       alert("Meeting link not received ❌");
       return;
     }
-
+localStorage.setItem("receiptData", JSON.stringify(data));
     navigate("/receipt", {
       state: data,
     });
