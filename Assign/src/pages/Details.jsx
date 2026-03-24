@@ -4,7 +4,8 @@ import { useNavigate,useLocation  } from "react-router-dom";
 
 const Details = () => {
   const navigate = useNavigate();
-  const { state } = useLocation();
+  const location = useLocation();
+const state = location.state || {};
 
   // ✅ ALL STATES
   const [name, setName] = useState("");
