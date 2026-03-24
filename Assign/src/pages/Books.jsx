@@ -32,7 +32,7 @@ const Books = () => {
   // ✅ FINAL NEXT BUTTON (FIXED)
  const handleNext = async () => {
   try {
-    const res = await fetch("http://localhost:5000/api/book", {
+    const res = await fetch("https://project-8pos.onrender.com/api/book", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
