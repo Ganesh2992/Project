@@ -38,7 +38,7 @@ const handleNext = async () => {
       amount: total,
     });
 
-    const res = await fetch("http://localhost:5000/api/book", {
+    const res = await fetch("https://project-8pos.onrender.com/api/book", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -54,9 +54,8 @@ const handleNext = async () => {
 
     console.log("RESPONSE:", data);
 
-    // 👇 IMPORTANT CHECK
     if (!data.meeting_link) {
-      alert("Meeting link not received ❌");
+      alert("Meeting link not received");
       return;
     }
 localStorage.setItem("receiptData", JSON.stringify(data));
