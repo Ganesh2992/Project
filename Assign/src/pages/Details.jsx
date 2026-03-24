@@ -127,7 +127,7 @@ const Details = () => {
             <p className="font-bold text-lg">₹ 2499/-</p>
 
             <button
-              disabled={!meetingType || !paymentMethod || !name || !phone}
+              disabled={!meetingType || !paymentMethod || !name || !phone || !email}
               onClick={() =>
                 navigate("/masterclass", {
                   state: {
