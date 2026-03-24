@@ -30,29 +30,31 @@ const Books = () => {
   const total = 2499 + cart.reduce((sum, item) => sum + item.price, 0);
 
   // ✅ FINAL NEXT BUTTON (FIXED)
- const handleNext = async () => {
+const handleNext = async () => {
+  // ✅ 1. Pehle navigation (instant)
+  navigate("/receipt", {
+    state: {
+      ...state,
+      books: cart,
+      amount: total,
+    },
+  });
+
+  // ✅ 2. Backend call background me
   try {
-    const res = await fetch("https://project-8pos.onrender.com/api/book", {
+    await fetch("https://project-8pos.onrender.com/api/book", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
       },
       body: JSON.stringify({
-        ...state, // 👈 Details + Masterclass ka data
+        ...state,
         books: cart,
         amount: total,
       }),
     });
-
-    const data = await res.json();
-
-    // ✅ backend se meeting link + data aayega
-    navigate("/receipt", {
-      state: data,
-    });
-
   } catch (err) {
-    console.log("Error:", err);
+    console.log("Backend error:", err);
   }
 };
 
