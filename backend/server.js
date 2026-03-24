@@ -13,30 +13,22 @@ app.post("/api/book", async (req, res) => {
   const data = req.body;
 
   console.log("DATA RECEIVED:", data);
+  console.log("EMAIL:", data.email);
 
-// ✅ YE ADD KAR
-console.log("EMAIL:", data.email);
-console.log("GUEST:", data.guestEmail);
+  const meetingLink = `https://meet.google.com/${Math.random().toString(36).substring(2,10)}`;
 
-  // 🔗 meeting link generate
-  const meetingLink =
-    "https://meet.google.com/" +
-    Math.random().toString(36).substring(2, 10);
-
-  // 📧 transporter
   const transporter = nodemailer.createTransport({
     service: "gmail",
     auth: {
-      user: process.env.EMAIL,   
-      pass: process.env.PASS,      
+      user: process.env.EMAIL,
+      pass: process.env.PASS,
     },
   });
 
   try {
-    // ✅ USER + GUEST ko mail
     await transporter.sendMail({
-      from: "YOUR_EMAIL@gmail.com",
-      to: `${data.email}, ${data.guestEmail}`, // 👈 ONLY 2 emails
+      from: process.env.EMAIL, // ✅ FIXED
+      to: data.email, // ✅ ONLY USER EMAIL
       subject: "Session Booked 🎉",
       html: `
         <h2>Your Session is Confirmed</h2>
@@ -54,10 +46,9 @@ console.log("GUEST:", data.guestEmail);
     console.log("Mail error ❌", err);
   }
 
-  // response frontend ko
   res.json({
     ...data,
-    meetingLink,
+    meeting_link: meetingLink, // ✅ correct key
   });
 });
 
