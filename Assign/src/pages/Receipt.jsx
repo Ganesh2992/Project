@@ -4,15 +4,15 @@ const Receipt = () => {
   const { state } = useLocation();
 
   // ✅ SAFE DESTRUCTURE (IMPORTANT)
-  const {
-    name = "N/A",
-    phone = "N/A",
-    date = "N/A",
-    time = "N/A",
-    amount = 0,
-    paymentMethod = "N/A",
-    meetingLink = "N/A",
-  } = state || {};
+const {
+  name = "N/A",
+  phone = "N/A",
+  date = "N/A",
+  time = "N/A",
+  amount = 0,
+  paymentMethod = "N/A",
+  meeting_link = "",
+} = state || {};
 
   return (
     <div className="min-h-screen flex items-center justify-center bg-gradient-to-b from-[#dff6f5] to-[#b2e8e5] p-6">
@@ -72,7 +72,7 @@ const Receipt = () => {
             <p><strong>Payment:</strong> {paymentMethod}</p>
 
             <p className="text-blue-500 break-all">
-              <strong>Meeting Link:</strong> {state.meeting_Link}
+              <strong>Meeting Link:</strong> {meeting_link ? meeting_link : "N/A"}
             </p>
           </div>
 
