@@ -72,7 +72,7 @@ const Receipt = () => {
             <p><strong>Payment:</strong> {paymentMethod}</p>
 
             <p className="text-blue-500 break-all">
-              <strong>Meeting Link:</strong> {meetingLink}
+              <strong>Meeting Link:</strong> {state.meeting_Link}
             </p>
           </div>
 
