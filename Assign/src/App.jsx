@@ -4,7 +4,7 @@ import Booking from "./pages/Booking";
 import Details from "./pages/Details";
 import Masterclass from "./pages/Masterclass";
 import Books from "./pages/Books";
-import Receipt from "./pages/receipt";
+import Receipt from "./pages/Receipt";
 
 function App() {
   return (
