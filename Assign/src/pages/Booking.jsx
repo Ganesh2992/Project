@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { useNavigate } from "react-router-dom"; // ✅ add
+import { useNavigate } from "react-router-dom";
 import Calendar from "react-calendar";
 import "react-calendar/dist/Calendar.css";
 
@@ -7,7 +7,7 @@ const Booking = () => {
   const [date, setDate] = useState(new Date());
   const [selectedTime, setSelectedTime] = useState("");
 
-  const navigate = useNavigate(); // ✅ add
+  const navigate = useNavigate(); 
 
   const timeSlots = [
     "8:00 AM",
@@ -60,7 +60,7 @@ const Booking = () => {
             ))}
           </div>
 
-          {/* ✅ NEXT BUTTON */}
+          {/* NEXT BUTTON */}
           <div className="mt-8 flex justify-end">
             <button
               disabled={!selectedTime}

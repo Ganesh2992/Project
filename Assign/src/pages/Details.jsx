@@ -7,7 +7,7 @@ const Details = () => {
   const location = useLocation();
 const state = location.state || {};
 
-  // ✅ ALL STATES
+  // ALL STATES
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [phone, setPhone] = useState("");

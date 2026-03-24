@@ -4,8 +4,7 @@ import { useNavigate, useLocation } from "react-router-dom";
 const Masterclass = () => {
   const [choice, setChoice] = useState("");
   const navigate = useNavigate();
-  const { state } = useLocation(); // ✅ previous data le rahe hain
-
+  const { state } = useLocation();
   return (
     <div className="min-h-screen flex items-center justify-center bg-gradient-to-b from-[#dff6f5] to-[#b2e8e5]">
       
@@ -81,14 +80,13 @@ const Masterclass = () => {
           <div className="mt-8 flex justify-between items-center">
             <p className="font-bold text-lg">₹ 2499/-</p>
 
-            {/* ✅ FIXED NEXT BUTTON */}
             <button
               disabled={!choice}
               onClick={() =>
                 navigate("/books", {
                   state: {
-                    ...state,      // 🔥 previous data preserve
-                    masterclass: choice, // optional
+                    ...state,      
+                    masterclass: choice,
                   },
                 })
               }

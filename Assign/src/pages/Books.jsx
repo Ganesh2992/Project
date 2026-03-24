@@ -15,7 +15,7 @@ const booksData = [
 const Books = () => {
   const [cart, setCart] = useState([]);
   const navigate = useNavigate();
-  const { state } = useLocation(); // ✅ previous data aa gaya
+  const { state } = useLocation();
 
   const toggleBook = (book) => {
     const exists = cart.find((item) => item.id === book.id);
@@ -29,7 +29,6 @@ const Books = () => {
 
   const total = 2499 + cart.reduce((sum, item) => sum + item.price, 0);
 
-  // ✅ FINAL NEXT BUTTON (FIXED)
 const handleNext = async () => {
   
   try {
@@ -39,7 +38,7 @@ const handleNext = async () => {
       amount: total,
     });
 
-    const res = await fetch("https://project-8pos.onrender.com/api/book", {
+    const res = await fetch("http://localhost:5000/api/book", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
